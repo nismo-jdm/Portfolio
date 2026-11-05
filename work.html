@@ -1,0 +1,532 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Poster Gallery | My Portfolio</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+:root {
+    --bg: #090909;
+    --paper: #e9e4d9;
+    --ink: #111;
+    --white: #f5f2eb;
+    --yellow: #ffc629;
+    --muted: #999;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Inter', sans-serif;
+}
+
+.container {
+    width: min(1200px, 92%);
+    margin: auto;
+}
+
+/* HEADER */
+
+header {
+    padding: 24px 0;
+    border-bottom: 1px solid #252525;
+}
+
+nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo {
+    font-size: 20px;
+    font-weight: 800;
+}
+
+.logo span {
+    color: var(--accent);
+}
+
+.back {
+    color: white;
+    text-decoration: none;
+    font-size: 13px;
+}
+
+/* HERO */
+
+.hero {
+    padding: 65px 0 35px;
+}
+
+.hero small {
+    color: var(--accent);
+    letter-spacing: 3px;
+    font-size: 11px;
+    font-weight: 700;
+}
+
+.hero h1 {
+    font-size: clamp(42px, 9vw, 85px);
+    line-height: .95;
+    margin: 20px 0;
+    letter-spacing: -5px;
+}
+
+.hero h1 span {
+    color: var(--accent);
+}
+
+.hero p {
+    color: var(--muted);
+    font-size: 14px;
+    line-height: 1.8;
+    max-width: 500px;
+}
+
+/* FILTERS */
+
+.filters {
+    display: flex;
+    gap: 10px;
+    overflow-x: auto;
+    padding: 25px 0;
+    scrollbar-width: none;
+}
+
+.filters::-webkit-scrollbar {
+    display: none;
+}
+
+.filter-btn {
+    flex-shrink: 0;
+    padding: 11px 19px;
+    border: 1px solid #333;
+    border-radius: 30px;
+    color: white;
+    background: transparent;
+    cursor: pointer;
+    font-size: 12px;
+}
+
+.filter-btn.active,
+.filter-btn:hover {
+    background: var(--accent);
+    color: black;
+    border-color: var(--accent);
+}
+
+/* POSTER GALLERY */
+
+.gallery {
+    columns: 2;
+    column-gap: 14px;
+    padding: 10px 0 60px;
+}
+
+.poster {
+    display: inline-block;
+    width: 100%;
+    margin-bottom: 14px;
+    break-inside: avoid;
+    background: var(--surface);
+    border-radius: 10px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: transform .3s ease;
+}
+
+.poster:hover {
+    transform: translateY(-4px);
+}
+
+.poster img {
+    display: block;
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+}
+
+.poster-info {
+    padding: 13px;
+}
+
+.poster-info h3 {
+    font-size: 13px;
+    margin-bottom: 6px;
+}
+
+.poster-info p {
+    font-size: 11px;
+    color: var(--muted);
+}
+
+/* LIGHTBOX */
+
+.lightbox {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,.95);
+    z-index: 1000;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 15px;
+}
+
+.lightbox.show {
+    display: flex;
+}
+
+.lightbox img {
+    max-width: 100%;
+    max-height: 88vh;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+}
+
+.close {
+    position: absolute;
+    top: 20px;
+    right: 25px;
+    color: white;
+    font-size: 35px;
+    cursor: pointer;
+    background: none;
+    border: none;
+}
+
+/* FOOTER */
+
+footer {
+    padding: 30px 0;
+    text-align: center;
+    border-top: 1px solid #252525;
+    color: var(--muted);
+    font-size: 12px;
+}
+
+/* DESKTOP */
+
+@media (min-width: 700px) {
+    .gallery {
+        columns: 5;
+        column-gap: 22px;
+    }
+
+    .poster {
+        margin-bottom: 22px;
+    }
+
+    .hero {
+        padding-top: 100px;
+    }
+}
+
+@media (min-width: 1100px) {
+    .gallery {
+        columns: 5;
+    }
+}
+body {
+    background: var(--bg);
+    color: var(--white);
+    font-family: 'Inter', sans-serif;
+}
+
+header {
+    background: var(--bg);
+    border-bottom: 1px solid #ffffff20;
+}
+
+.logo span,
+.hero h1 span,
+.yellow-dot {
+    color: var(--yellow);
+}
+
+.hero small {
+    color: var(--yellow);
+}
+
+.hero p,
+.poster-info p {
+    color: var(--muted);
+}
+
+/* Filter buttons */
+
+.filter-btn {
+    background: transparent;
+    color: var(--white);
+    border: 1px solid #ffffff35;
+}
+
+.filter-btn.active,
+.filter-btn:hover {
+    background: var(--yellow);
+    color: var(--ink);
+    border-color: var(--yellow);
+}
+
+/* Poster gallery */
+
+.poster {
+    background: #151515;
+    border: 1px solid #ffffff15;
+}
+
+.poster:hover {
+    border-color: var(--yellow);
+}
+
+/* Poster information */
+
+.poster-info h3 {
+    color: var(--white);
+}
+
+/* Footer */
+
+footer {
+    background: var(--paper);
+    color: var(--ink);
+}
+
+/* Buttons */
+
+.button-primary {
+    background: var(--yellow);
+    color: var(--ink);
+}
+
+/* Lightbox */
+
+.lightbox {
+    background: rgba(9, 9, 9, .97);
+}
+.brand{font-family:"Barlow Condensed",sans-serif;font-size:23px;font-weight:900;letter-spacing:-1px}
+.brand span{font:10px "DM Sans";vertical-align:top;margin-left:3px;color:var(--yellow)}
+a{color:inherit;text-decoration:none}
+
+</style>
+</head>
+
+<body>
+
+<header>
+    <div class="container">
+        <nav>
+            <a class="brand" href="#home" aria-label="Ichappi Creative home">ICHAPPI CREATIVES<span>®</span></a>
+            <a href="index.html" class="back">← Back to Home</a>
+        </nav>
+    </div>
+</header>
+
+<main class="container">
+
+    <section class="hero">
+        <small>SELECTED CREATIVE WORKS / 2026</small>
+        <h1>POSTER<br><span>GALLERY.</span></h1>
+        <p>
+            A collection of creative designs, event posters,
+            social media artwork and visual experiments.
+            Every design tells a different story.
+        </p>
+    </section>
+
+    <div class="filters" id="filters">
+        <button class="filter-btn active" data-category="all">All Works</button>
+        <button class="filter-btn" data-category="event">Event Posters</button>
+        <button class="filter-btn" data-category="social">Social Media</button>
+        <button class="filter-btn" data-category="islamic">Islamic Designs</button>
+        <button class="filter-btn" data-category="typography">Typography</button>
+        <button class="filter-btn" data-category="branding">Branding</button>
+    </div>
+
+    <section class="gallery" id="gallery"></section>
+
+</main>
+
+<div class="lightbox" id="lightbox">
+    <button class="close" id="close">&times;</button>
+    <img src="" alt="Poster Preview" id="preview">
+</div>
+
+<footer>
+    © 2026 My Portfolio. All Rights Reserved.
+</footer>
+
+<script>
+
+// ======================================
+// ADD YOUR POSTERS HERE
+// ======================================
+
+const posters = [
+
+    {
+        title: "The Art of Disagreement",
+        category: "event",
+        image: "assets/poster1.jpg"
+    },
+
+    {
+        title: "External Degree Orientation",
+        category: "event",
+        image: "assets/poster3.jpg"
+    },
+
+    {
+        title: "Urdu Reading Competition",
+        category: "event",
+        image: "assets/poster5.jpg"
+    },
+
+    {
+        title: "Arabic Debate Committee",
+        category: "event",
+        image: "assets/poster2.jpg"
+    },
+
+    {
+        title: "Ourthuba Diaries",
+        category: "event",
+        image: "assets/poster6.jpg"
+    },
+    
+    {
+        title: "Inahu Nahvi",
+        category: "event",
+        image: "assets/poster4.jpg"
+    },
+    {
+        title: "Ziyath Camp",
+        category: "islamic",
+        image: "assets/event-photo-collage.jpg"
+    },{
+        title: "Basmalah Campaign",
+        category: "islamic",
+        image: "assets/skssf-launch-poster.jpg"
+    },{
+        title: "SKSSF Congratulations Poster",
+        category: "islamic",
+        image: "assets/skssf-poster-01.jpg"
+    },
+
+    
+
+];
+
+// ======================================
+// RENDER GALLERY
+// ======================================
+
+const gallery = document.getElementById("gallery");
+
+function renderPosters(category = "all") {
+
+    gallery.innerHTML = "";
+
+    const filtered = posters.filter(p =>
+        category === "all" || p.category === category
+    );
+
+    filtered.forEach(poster => {
+
+        const card = document.createElement("article");
+        card.className = "poster";
+
+        const img = document.createElement("img");
+        img.src = poster.image;
+        img.alt = poster.title;
+        img.loading = "lazy";
+
+        const info = document.createElement("div");
+        info.className = "poster-info";
+
+        const title = document.createElement("h3");
+        title.textContent = poster.title;
+
+        const categoryText = document.createElement("p");
+        categoryText.textContent = poster.category.toUpperCase();
+
+        info.append(title, categoryText);
+        card.append(img, info);
+
+        card.addEventListener("click", () => {
+            openPreview(poster.image);
+        });
+
+        gallery.appendChild(card);
+
+    });
+
+}
+
+// ======================================
+// CATEGORY FILTER
+// ======================================
+
+document.querySelectorAll(".filter-btn").forEach(button => {
+
+    button.addEventListener("click", () => {
+
+        document.querySelector(".filter-btn.active")
+            ?.classList.remove("active");
+
+        button.classList.add("active");
+
+        renderPosters(button.dataset.category);
+
+    });
+
+});
+
+// ======================================
+// IMAGE PREVIEW
+// ======================================
+
+const lightbox = document.getElementById("lightbox");
+const preview = document.getElementById("preview");
+
+function openPreview(image) {
+    preview.src = image;
+    lightbox.classList.add("show");
+}
+
+document.getElementById("close").onclick = () => {
+    lightbox.classList.remove("show");
+};
+
+lightbox.addEventListener("click", e => {
+    if (e.target === lightbox) {
+        lightbox.classList.remove("show");
+    }
+});
+
+document.addEventListener("keydown", e => {
+    if (e.key === "Escape") {
+        lightbox.classList.remove("show");
+    }
+});
+
+// INITIALIZE
+
+renderPosters();
+
+</script>
+
+</body>
+</html>
